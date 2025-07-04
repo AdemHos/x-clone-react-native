@@ -1,6 +1,8 @@
 import asyncHandler from 'express-async-handler'
 import Post from '../models/post.model.js'
 import User from '../models/user.model.js'
+import Comment from '../models/comment.model.js'
+import Notification from '../models/notification.model.js'
 import cloudinary from '../config/cloudinary.js'
 
 
@@ -17,7 +19,7 @@ export const getPosts = asyncHandler(async(req,res) => {
         }
     });
     res.status(200).json({posts})   
-})
+});
 
 export const getPost = asyncHandler(async(req,res) => {
     const {postId} = req.params;
@@ -34,7 +36,7 @@ export const getPost = asyncHandler(async(req,res) => {
     if(!post) return res.status(404).json({error: "Post not found"})
      
       res.status(200).json({post})  
-})
+});
 
 export const getUserPosts = asyncHandler(async(req,res) => {
     const {username} = req.params;
@@ -56,7 +58,7 @@ export const getUserPosts = asyncHandler(async(req,res) => {
     if(!post) return res.status(404).json({error: "Post not found"})
 
      res.status(200).json({post})  
-})
+});
 
 
 export const createPost = asyncHandler(async(req,res) => {
@@ -107,7 +109,7 @@ export const createPost = asyncHandler(async(req,res) => {
 
 
 
-})
+});
 
 export const likePost = asyncHandler(async(req,res) => {
     const {userId} = getAuth(req);
@@ -167,4 +169,4 @@ export const deletePost = asyncHandler(async(req,res) => {
     await Post.findByIdAndDelete(postId);
 
     res.status(200).json({message: "Post deleted successfully"});
-})
+});
