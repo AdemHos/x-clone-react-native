@@ -2,7 +2,7 @@ import { Text, View,Image, TouchableOpacity, ActivityIndicator } from "react-nat
 import { useSocialAuth } from "@/hooks/useSocialAuth";
 
 export default function Index() {
- const {isLoading,handleSocialAuth} = useSocialAuth( )
+ const {isLoading,handleSocialAuth} = useSocialAuth()
   return (
     <View
     className="flex-1 bg-white"
